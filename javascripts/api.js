@@ -19,14 +19,15 @@ var config = {
      return config;
 };
 
+var movieSearch = "Star";
 
  MovieAPI.getMovies = (movieID) => {
 	return new Promise((resolve, reject) => {
-		// console.log("url", `${MovieAPI.getMDBSettings().databaseURL}/3/movie/550?api_key=${MovieAPI.getMDBSettings().apiKey}`);
+		// console.log("url", `${MovieAPI.getMDBSettings().databaseURL}/3/search/movie/?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US&query=${movieSearch}&page=1&include_adult=false&append_to_response=credits}`);
 		$.ajax({
-			url: `${MovieAPI.getMDBSettings().databaseURL}/3/movie/${movieID}?api_key=${MovieAPI.getMDBSettings().apiKey}`
+           url: `${MovieAPI.getMDBSettings().databaseURL}/3/search/movie?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US&query=${movieSearch}&page=1&include_adult=false&append_to_response=credits`
 		}).done((movieData) => {
-			console.log("movieData in promise", movieData);
+			//console.log("movieData in promise", movieData);
 			resolve(movieData);
 		}).fail((error) => {
 			reject(error);
