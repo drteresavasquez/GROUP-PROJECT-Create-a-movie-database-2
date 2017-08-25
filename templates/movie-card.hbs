@@ -5,10 +5,10 @@
   <h3>{{original_title}}</h3>
   <p>{{release_date}}</p>
   <p>{{overview}}</p>
+    {{#each credits}}
 
-    {{!--#each--}}
-  {{!-- Handlebars Helper to iterate through first five cast members--}}
-    {{!--/each--}}
+      <p>{{castName}}</p>
+    {{/each}}
 
 </div>
 {{/each}}
