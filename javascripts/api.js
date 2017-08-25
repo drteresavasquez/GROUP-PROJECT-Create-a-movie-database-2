@@ -23,9 +23,8 @@ var config = {
 
  MovieAPI.getMovies = (movieSearch) => {
 	return new Promise((resolve, reject) => {
-		// console.log("url", `${MovieAPI.getMDBSettings().databaseURL}/3/search/movie/?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US&query=${movieSearch}&page=1&include_adult=false&append_to_response=credits}`);
 		$.ajax({
-           url: `${MovieAPI.getMDBSettings().databaseURL}/3/search/movie?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US&query=${movieSearch}&page=1&include_adult=false&append_to_response=credits`
+           url: `${MovieAPI.getMDBSettings().databaseURL}/3/search/movie?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US&query=${movieSearch}&page=1&include_adult=false`
 		}).done((movieData) => {
 			//console.log("movieData in promise", movieData);
 			resolve(movieData);
@@ -35,5 +34,19 @@ var config = {
 	 });
 };
 
+
+
+MovieAPI.getMoviesWithCredits = (movieID) => {
+	return new Promise((resolve, reject) => {
+		$.ajax({
+           url: `${MovieAPI.getMDBSettings().databaseURL}/3/movie/${movieID}?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US&append_to_response=credits`
+		}).done((movieDataWithCredits) => {
+			//console.log("movieData in promise", movieData);
+			resolve(movieDataWithCredits);
+		}).fail((error) => {
+			reject(error);
+		});
+	 });
+};
 
 module.exports = MovieAPI;
