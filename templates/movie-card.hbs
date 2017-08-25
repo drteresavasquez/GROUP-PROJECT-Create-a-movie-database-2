@@ -1,0 +1,14 @@
+{{#each this}}
+
+<div class="movieCard">
+  <img src="https://image.tmdb.org/t/p/w500{{poster_path}}">
+  <h3>{{original_title}}</h3>
+  <p>{{release_date}}</p>
+  <p>{{overview}}</p>
+
+    {{!--#each--}}
+  {{!-- Handlebars Helper to iterate through first five cast members--}}
+    {{!--/each--}}
+             
+</div>
+{{/each}}
