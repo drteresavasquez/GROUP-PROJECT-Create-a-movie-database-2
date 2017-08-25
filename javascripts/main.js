@@ -8,6 +8,8 @@ let movieAPILoader = require('./api.js'),
     movieTemplate = require("../templates/movie-card.hbs"),
     handlebarHelper = require("./hbsHelpers.js");
 
+var movieIDsArray = [];
+var movieObjArray = [];
 
 $("#GoMALCOLM").click(function(){ //clicks or presses enter
     // gets value from search
@@ -18,9 +20,29 @@ $("#GoMALCOLM").click(function(){ //clicks or presses enter
     movieAPILoader.getMovies(movieSearch)
         .then((movieData)=>{
             console.log('movie data retrieved', movieData);
-            loadMoviesToDOM(movieData.results);
-        });
+            for (let i = 0; i < movieData.results.length; i++) {
+                movieIDsArray.push(movieData.results[i].id);
+            }  
+            for (let i = 0; i < movieIDsArray.length; i++) {
+                requestMovieByID(movieIDsArray[i]);
+            }
+        })
+        .then((movieObjArray)=>{
+          console.log('movieOBJArray loads');
+          
+        }); 
 });
+
+// PROMISE.ALL then loadMoviesToDOM
+                
+function requestMovieByID(movieID) {
+movieAPILoader.getMoviesWithCredits(movieID)
+    .then((movieDataWithCredits)=>{
+         console.log('movieDataWithCredits', movieDataWithCredits);
+       movieObjArray.push(movieDataWithCredits);
+    });
+
+}
 
 
 function loadMoviesToDOM(movieData) {
