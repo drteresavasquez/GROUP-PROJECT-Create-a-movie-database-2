@@ -2,7 +2,7 @@
 
 console.log("main js loaded");
 
-let movieAPILoader = require('./api.js'),
+let movieAPILoader = require('../api.js'),
     $ = require('jquery'),
     build = require("./dom-builder.js");
 
@@ -12,4 +12,3 @@ let movieAPILoader = require('./api.js'),
         console.log('movieAPILoader.getMovies(550)', movieAPILoader.getMovies(550));
         build.makeMovieCards(movieAPILoader.getMovies(550));
     });
-
