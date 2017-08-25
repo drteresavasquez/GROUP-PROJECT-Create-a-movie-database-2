@@ -7,10 +7,13 @@ let movieAPILoader = require('./api.js'),
     buildCard = require("./dom-builder.js"),
     movieTemplate = require("../templates/movie-card.hbs");
 
+
 $("#GoMALCOLM").click(function(){ //clicks or presses enter
-    //gets value from search  let movieSearch = getElementByID(SEARCH ID).value;
-    let movieSearch = "Star";
-    
+    // gets value from search
+    let movieSearch = document.getElementById("searchBar").value;
+
+    // let movieSearch = "Star";
+
     movieAPILoader.getMovies(movieSearch)
         .then((movieData)=>{
             console.log('movie data retrieved', movieData);
@@ -23,7 +26,7 @@ function loadMoviesToDOM(movieData) {
     let card = document.createElement("div");
     card.innerHTML = movieTemplate(movieData);
     // console.log('load movies to dom called');
-    
+
     $("#movieDiv").append(card);
 
 }
