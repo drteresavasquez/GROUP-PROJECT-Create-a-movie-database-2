@@ -5,7 +5,8 @@ console.log("main js loaded");
 let movieAPILoader = require('./api.js'),
     $ = require('jquery'),
     buildCard = require("./dom-builder.js"),
-    movieTemplate = require("../templates/movie-card.hbs");
+    movieTemplate = require("../templates/movie-card.hbs"),
+    handlebarHelper = require("./hbsHelpers.js");
 
 
 $("#GoMALCOLM").click(function(){ //clicks or presses enter

@@ -3,15 +3,16 @@
 let Handlebars = require('hbsfy/runtime');
 let movieFactory = require("./api.js");
 
-movieFactory.getMovies();
-
-Handlebars.registerHelper("castArray", (value) => {
+Handlebars.registerHelper("castArray", () => {
+  console.log("This is working");
+  let mvObj = movieFactory.getMovies();
+  let castName = "";
       for (var i = 0; i < 5; i++) {
 
-       credits.cast[i].name;
+       castName = mvObj.credits.cast[i].name;
 
       }
 
 
-    return ;
+    return castName;
 });
