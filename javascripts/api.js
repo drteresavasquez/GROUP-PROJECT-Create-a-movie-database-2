@@ -19,9 +19,9 @@ var config = {
      return config;
 };
 
-var movieSearch = "Star";
+//var movieSearch = "Star";
 
- MovieAPI.getMovies = (movieID) => {
+ MovieAPI.getMovies = (movieSearch) => {
 	return new Promise((resolve, reject) => {
 		// console.log("url", `${MovieAPI.getMDBSettings().databaseURL}/3/search/movie/?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US&query=${movieSearch}&page=1&include_adult=false&append_to_response=credits}`);
 		$.ajax({
