@@ -9,7 +9,7 @@ let movieAPILoader = require('./api.js'),
     handlebarHelper = require("./hbsHelpers.js");
 
 var movieIDsArray = [];
-var movieObjArray = [];
+
 
 $("#GoMALCOLM").click(function(){ //clicks or presses enter
     // gets value from search
@@ -23,33 +23,39 @@ $("#GoMALCOLM").click(function(){ //clicks or presses enter
             for (let i = 0; i < movieData.results.length; i++) {
                 movieIDsArray.push(movieData.results[i].id);
             }  
-            for (let i = 0; i < movieIDsArray.length; i++) {
-                requestMovieByID(movieIDsArray[i]);
-            }
-        })
-        .then((movieObjArray)=>{
-          console.log('movieOBJArray loads');
-          
-        }); 
+            loopIDthenDOMDisplay(movieIDsArray);
+        });
+
+
+        // .then((movieObjArray)=>{
+        //  loadMoviesToDOM(movieObjArray);
+        //     console.log('movieOBJArray loads');
+        
+        // }); 
 });
 
 // PROMISE.ALL then loadMoviesToDOM
                 
-function requestMovieByID(movieID) {
-movieAPILoader.getMoviesWithCredits(movieID)
-    .then((movieDataWithCredits)=>{
-         console.log('movieDataWithCredits', movieDataWithCredits);
-       movieObjArray.push(movieDataWithCredits);
-    });
-
+var movieObjArray = [];
+function loopIDthenDOMDisplay(idArray) {
+    for (let i = 0; i < idArray.length; i++) {
+        requestMovieByID(idArray[i]);  
+    }
+    console.log('movieOBJArray out function', movieObjArray.length);
+    
+    loadMoviesToDOM(movieObjArray);
 }
-
+function requestMovieByID(movieID) {
+    movieAPILoader.getMoviesWithCredits(movieID)
+        .then((movieDataWithCredits)=>{
+        console.log('movieDataWithCredits', movieDataWithCredits);
+        movieObjArray.push(movieDataWithCredits);
+        }); 
+}
 
 function loadMoviesToDOM(movieData) {
     let card = document.createElement("div");
     card.innerHTML = movieTemplate(movieData);
-    // console.log('load movies to dom called');
-
+     console.log('load movies to dom called', movieData);
     $("#movieDiv").append(card);
-
 }
