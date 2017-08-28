@@ -9,53 +9,30 @@ let movieAPILoader = require('./api.js'),
     handlebarHelper = require("./hbsHelpers.js");
 
 var movieIDsArray = [];
-
+var movieObjArray = [];
 
 $("#GoMALCOLM").click(function(){ //clicks or presses enter
     // gets value from search
     let movieSearch = document.getElementById("searchBar").value;
 
-    // let movieSearch = "Star";
-
     movieAPILoader.getMovies(movieSearch)
         .then((movieData)=>{
-            console.log('movie data retrieved', movieData);
-            for (let i = 0; i < movieData.results.length; i++) {
-                movieIDsArray.push(movieData.results[i].id);
-            }  
-            loopIDthenDOMDisplay(movieIDsArray);
+           // console.log('movie data retrieved', movieData);
+           movieData.results.forEach((movie)=>{
+               requestMovieByID(movie);
+           });
         });
-
-
-        // .then((movieObjArray)=>{
-        //  loadMoviesToDOM(movieObjArray);
-        //     console.log('movieOBJArray loads');
-        
-        // }); 
 });
 
-// PROMISE.ALL then loadMoviesToDOM
-                
-var movieObjArray = [];
-function loopIDthenDOMDisplay(idArray) {
-    for (let i = 0; i < idArray.length; i++) {
-        requestMovieByID(idArray[i]);  
-    }
-    console.log('movieOBJArray out function', movieObjArray.length);
-    
-    loadMoviesToDOM(movieObjArray);
-}
 function requestMovieByID(movieID) {
-    movieAPILoader.getMoviesWithCredits(movieID)
+    movieAPILoader.getMoviesWithCredits(movieID.id)
         .then((movieDataWithCredits)=>{
-        console.log('movieDataWithCredits', movieDataWithCredits);
+        movieObjArray = [];
         movieObjArray.push(movieDataWithCredits);
+        loadMoviesToDOM(movieObjArray);
         }); 
 }
 
 function loadMoviesToDOM(movieData) {
-    let card = document.createElement("div");
-    card.innerHTML = movieTemplate(movieData);
-     console.log('load movies to dom called', movieData);
-    $("#movieDiv").append(card);
+    $("#movieDiv").append(movieTemplate(movieData));
 }
