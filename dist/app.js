@@ -217,9 +217,9 @@ module.exports = MovieAPI;
 
 function getFBKey() {
  return {
-   apiKey: "AIzaSyB_qfhqUeYQaHqPmFeh-_ewd_uHkF2whnI",
-   authDomain: "moviehistorydb.firebaseapp.com",
-   databaseURL: "https://moviehistorydb.firebaseio.com"
+   apiKey: "AIzaSyDQksCicsOwKh5YbHygziPVCdCeUjfAR4w",
+   authDomain: "movie-65c61.firebaseapp.com",
+   databaseURL: "https://movie-65c61.firebaseio.com"
  };
 }
 
@@ -278,7 +278,7 @@ var fire = {
     return new Promise((resolve, reject) => {
       let userID = fire.getCurrentUser();
       $.ajax({
-        url: `https://moviehistorydb.firebaseio.com/.json?orderBy="uid"&equalTo="${userID}"`
+        url: `https://movie-65c61.firebaseio.com/.json?orderBy="uid"&equalTo="${userID}"`
       }).done((data) => {
         resolve(data);
       });

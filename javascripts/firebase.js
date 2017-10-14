@@ -50,7 +50,7 @@ var fire = {
     return new Promise((resolve, reject) => {
       let userID = fire.getCurrentUser();
       $.ajax({
-        url: `https://moviehistorydb.firebaseio.com/.json?orderBy="uid"&equalTo="${userID}"`
+        url: `https://movie-65c61.firebaseio.com/.json?orderBy="uid"&equalTo="${userID}"`
       }).done((data) => {
         resolve(data);
       });
