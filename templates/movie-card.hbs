@@ -1,14 +1,24 @@
 {{#each this}}
+<div class="col xl4 l6 m6 s12 movieCard" id="card--{{movieID}}">
+    <div class="card sticky-action" id="cardSticky{{movieID}}">
+        <div class="card-image waves-effect waves-block waves-light" id="cardImage--{{movieID}}">
+          <img class="activator icon{{movieID}}" src="{{poster}}">
+        </div>
+        <div class="card-content" id=titleDiv--{{movieID}}>
+        <span class='card-title activator grey-text text-darken-4 icon{{movieID}} col s10 truncate'>{{title}}</span>
+        </div>
 
-<div class="movieCard">
-  <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="No Image Available">
-  <h3>{{original_title}}</h3>
-  <p>{{release_date}}</p>
-  <p>{{overview}}</p>
-    {{#each credits}}
 
-     {{!-- <p>{{castArray castName}}</p>--}}
-    {{/each}}
+		<div class="card-reveal" id="reveal{{movieID}}">
+		  <span class="card-title grey-text text-darken-4">Overview<i class="material-icons right">close</i></span>
+		<span>({{year}})</span>
+		  <p>{{overview}}</p>
+		<span class="card-title grey-text text-darken-4">Cast</span>
+		<p id="castReveal{{movieID}}"></p>
+		</div>
+		<div id="rateYo{{@index}}" class="rateYo" onclick="Materialize.toast('Rated!', 3000, 'yellow accent-4')"></div>
+	</div>
 
 </div>
+
 {{/each}}

@@ -1,0 +1,26 @@
+{{#each this}}
+{{log this}}
+<div class="col xl4 l6 m6 s12 movieCard" id="card--{{movieID}}">
+	<div class="card sticky-action" id="cardSticky{{movieID}}">
+		<div class="card-image waves-effect waves-block waves-light" id="cardImage{{movieID}}">
+		  <img class="activator icon{{movieID}}" src="{{poster}}">
+		</div>
+		<div id="card-content--{{movieID}}" class="card-content">
+		<span class='card-title grey-text text-darken-4 icon{{movieID}} col s10 truncate'>{{title}}</span>
+
+      {{alreadyFB this}}
+      <div id="rateYo{{movieID}}" class="rateYo" rating="{{rating}}" onclick="Materialize.toast('Rated!', 3000, 'yellow accent-4')"></div>
+    </div>
+		<div class="card-reveal" id="reveal{{movieID}}">
+		  <span class="card-title grey-text text-darken-4">Overview<i class="material-icons right">close</i></span>
+		<span>({{year}})</span>
+		  <p>{{overview}}</p>
+		<span class="card-title grey-text text-darken-4">Cast</span>
+		<p id="castReveal{{movieID}}"></p>
+		</div>
+
+	</div>
+</div>
+</div>
+{{!-- {{modal this}} --}}
+{{/each}}

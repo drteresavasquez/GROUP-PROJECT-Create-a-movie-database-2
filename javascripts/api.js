@@ -1,7 +1,5 @@
 "use strict";
 // movie database api configure
-console.log("api.js loaded");
-
 let MovieAPI = {};
 
 let $ = require("jquery"),
@@ -19,8 +17,6 @@ var config = {
      return config;
 };
 
-//var movieSearch = "Star";
-
  MovieAPI.getMovies = (movieSearch) => {
 	return new Promise((resolve, reject) => {
 		$.ajax({
@@ -34,19 +30,24 @@ var config = {
 	 });
 };
 
+MovieAPI.getCredits = (id) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: `${MovieAPI.getMDBSettings().databaseURL}/3/movie/${id}/credits?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US`
+    }).done((data) => {
+      resolve(data);
+    });
+  });
+};
 
-
-MovieAPI.getMoviesWithCredits = (movieID) => {
-	return new Promise((resolve, reject) => {
-		$.ajax({
-           url: `${MovieAPI.getMDBSettings().databaseURL}/3/movie/${movieID}?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US&append_to_response=credits`
-		}).done((movieDataWithCredits) => {
-			//console.log("movieData in promise", movieData);
-			resolve(movieDataWithCredits);
-		}).fail((error) => {
-			reject(error);
-		});
-	 });
+MovieAPI.getSingleMovie = (id) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: `https://api.themoviedb.org/3/movie/${id}?api_key=${MovieAPI.getMDBSettings().apiKey}&language=en-US`
+    }).done((data) => {
+      resolve(data);
+    });
+  });
 };
 
 module.exports = MovieAPI;

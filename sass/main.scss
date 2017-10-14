@@ -1,0 +1,165 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: url(../images/collage-copy.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+// **** Card Styles **** //
+img.activator {
+  height: 400px !important;
+  overflow: hidden !important;
+}
+
+div.card-content {
+  height: 100px !important;
+  padding: 16px !important;
+  padding-right: 0 !important;
+  padding-left: 24px !important;
+
+}
+
+////SEARCH VIEW
+#searchView{
+    margin-top: 70px;
+    overflow: scroll;
+}
+#searchBar{
+    background-color: rgba(255,255,255, .8);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 3em;
+    border-radius: 5px;
+    width: 100%;
+  }
+#searchBar::placeholder {
+    color: gray;
+    text-align: center;
+  }
+
+//PRINT TO DOM HOLDER
+#mainSearchResults{
+    width: 100% auto;
+}
+
+////USER VIEW SEARCH
+#userSearchBar{
+    width: 90%;
+    background-color: rgba(255,255,255, .8);
+    padding: 10px 0;
+    text-align: center;
+    font-size: 2em;
+}
+
+#userSearchBar::placeholder{
+    color: gray;
+    text-align: center;
+  }
+
+#breadcrumbs{
+    font-size: 1.5em;
+    font-weight: 900;
+    cursor: pointer;
+}
+.appendBread{
+    font-weight: 300;
+    font-style: italic;
+}
+#userView{
+    display: flex;
+    justify-content: center;
+    align-content: stretch;
+    margin-top:50px;
+    color: black;
+    width: 100%;
+    min-height: 500px;
+}
+
+.toggle-btns{
+    margin-bottom: 20px;
+}
+
+.btn.profile{
+    margin-bottom: 10px;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+.logoff{
+    background-color: red;
+}
+#untracked{
+    width: 20%;
+}
+
+//USER VIEW PROFILE COLUMN
+.col.s3.gray{
+    background-color: rgba(30,84,153,.8);
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    text-align: center;
+    padding-bottom: 150px;
+}
+
+.col.s3.gray img{
+    padding-top: 30px;
+    display:block;
+    margin:auto;
+    width: 90%;
+}
+.col.s3.gray h4{
+    color: white;
+    font-size: 2em;
+}
+
+//USER VIEW MOVIE COLUMN
+.col.s9.mainContent{
+    background-color: rgba(197,217,221,.97);
+    overflow: scroll;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 100%;
+    min-width: 700px;
+}
+
+.page-footer{
+    background-color: gray;
+}
+
+.is-hidden{
+    display:none;
+}
+.btn-floating.btn-large.waves-effect.waves-light.green,
+.btn-floating.btn-large.waves-effect.waves-light.red{
+    position: absolute;
+    margin-left: -130px;
+    margin-top: -60px;
+}
+.rateYo{
+    position: absolute;
+    margin-top: 50px;
+    margin-left: -10px;
+}
+
+/********** Rating Search Icon ************/
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 32px;
+    width: 32px;
+    background: goldenrod;
+    background: url('../images/star.png') no-repeat;
+    margin-top: -15px;
+    border-radius: 0 !important;
+}
+input[type=range]+.thumb {
+    background-color: gold !important;
+}
+input[type=range]+.thumb.active{
+  top: -35px !important;
+}
